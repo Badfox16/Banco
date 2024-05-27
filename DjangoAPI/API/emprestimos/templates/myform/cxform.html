@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pedido de Empréstimo - Emprestimos API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 50px;
+        }
+        .header-links {
+        margin-bottom: 20px;
+        padding-bottom: 10px; /* Adiciona padding na parte inferior */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra inferior */
+      }
+      .header-links a {
+        margin-right: 20px;
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+        h1 {
+            color: #007bff;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .messages {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .messages .alert {
+            margin-bottom: 10px;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header-links">
+          <a href="/emprestimos">Ver empréstimos</a>
+          <a href="/emprestimos/criar">Fazer Pedido</a>
+          <a href="#">Link 3</a>
+        </div>
+    {% load crispy_forms_tags %}
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-6">
+                <h1 class="text-center">Pedido de Empréstimo</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block">Submeter</button>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <h4>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div class="alert {% if 'Aprovado' in message %} alert-danger {% else %} alert-success {% endif %}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </h4>
+    </div>
+    
+    
+    
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Emprestimo</title>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+</head>
+<style>
+    body {
+      padding: 10px;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #dee2e6;
+    }
+    th {
+      background-color: #f8f9fa;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+    .table-responsive {
+      overflow-x: auto;
+    }
+    .header-links {
+      margin-bottom: 20px;
+      padding: 10px; /* Adiciona padding na parte inferior */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra inferior */
+    }
+    .header-links a {
+      margin-right: 20px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-links">
+      <a href="/emprestimos">Ver empréstimos</a>
+      <a href="/emprestimos/criar">Fazer Pedido</a>
+      <a href="#">Link 3</a>
+    </div>
+    <div class="container mt-5">
+        <h2>Detalhes do Empréstimo</h2>
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Informações do Empréstimo</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Nome:</strong> {{ emprestimo.firstname }} {{ emprestimo.lastname }}</li>
+                    <li class="list-group-item"><strong>Dependentes:</strong> {{ emprestimo.dependents }}</li>
+                    <li class="list-group-item"><strong>Renda do Solicitante:</strong> {{ emprestimo.applicantIncome }}</li>
+                    <li class="list-group-item"><strong>Renda do Cônjuge:</strong> {{ emprestimo.coapplicantIncome }}</li>
+                    <li class="list-group-item"><strong>Valor do Empréstimo:</strong> {{ emprestimo.loanAmount }}</li>
+                    <li class="list-group-item"><strong>Prazo:</strong> {{ emprestimo.loan_Amount_Term }} dias</li>
+                    <li class="list-group-item"><strong>Área de Propriedade:</strong> {{ emprestimo.property_Area }}</li>
+                    <li class="list-group-item"><strong>Resultado:</strong> {{ emprestimo.resultado }}</li>
+                </ul>
+                <a href="{% url 'editar' id=emprestimo.id %}" class="btn btn-primary mt-3">Editar</a>
+                <a href="{% url 'emprestimos' %}" class="btn btn-secondary mt-3">Voltar</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
