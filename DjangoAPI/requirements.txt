@@ -3,3 +3,8 @@ numpy
 tensorflow
 keras
 django
+djangorestframework
+joblib
+django-crispy-forms
+crispy-bootstrap4
+scikit-learn
