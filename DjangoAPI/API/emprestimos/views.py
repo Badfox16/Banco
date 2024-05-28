@@ -27,7 +27,7 @@ def emprestimos(request):
     return render(request, 'tables/emprestimos.html', {'emprestimos': emprestimos})
      
 def ohevalue(df):
-	ohe_col=joblib.load("C:/Users/User/Desktop/IA/Banco/DjangoAPI/API/emprestimos/allcol.pkl")
+	ohe_col=joblib.load("C:/Users/Usuario/Documents/IA/Banco - Shelton/DjangoAPI/API/emprestimos/allcol.pkl")
 	cat_columns=['Gender','Married','Education','Self_Employed','Property_Area']
 	df_processed = pd.get_dummies(df, columns=cat_columns)
 	newdict={}
@@ -46,19 +46,19 @@ def deserialize_model(model_json, model_weights):
     model.set_weights(model_weights)
     return model
 
-with open('C:/Users/User/Desktop/IA/Banco/DjangoAPI/API/emprestimos/emprestimo.pkl', 'rb') as f:
+with open('C:/Users/Usuario/Documents/IA/Banco - Shelton/DjangoAPI/API/emprestimos/emprestimo.pkl', 'rb') as f:
     model_json, model_weights = pickle.load(f)
     clf_carregado = deserialize_model(model_json, model_weights)
 	
 # Abre o arquivo scaler.pkl para leitura binária (modo 'rb')
-with open('C:/Users/User/Desktop/IA/Banco/DjangoAPI/API/emprestimos/scaler.pkl', 'rb') as f:
+with open('C:/Users/Usuario/Documents/IA/Banco - Shelton/DjangoAPI/API/emprestimos/scaler.pkl', 'rb') as f:
     # Carrega o objeto scaler do arquivo usando o pickle
     scaler = pickle.load(f)
 
 def approvereject(unit):
 	try:
 		mdl=clf_carregado
-		# scalers=joblib.load("C:/Users/User/Desktop/IA/Banco/DjangoAPI/API/emprestimos/scaler.pkl")
+		# scalers=joblib.load("C:/Users/Usuario/Documents/IA/Banco - Shelton/DjangoAPI/API/emprestimos/scaler.pkl")
 		X=scaler.transform(unit)
 		y_pred=mdl.predict(X)
 		y_pred=(y_pred>0.5)
